@@ -5,7 +5,8 @@ const path = require('path');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
-require('dotenv').config({ path: '.env.local' });
+// require('dotenv').config({ path: '.env.local' });
+require('dotenv').config();
 
 
 const app = express();
