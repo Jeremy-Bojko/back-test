@@ -5,7 +5,7 @@ const stuffCtrl = require('../controllers/stuff');
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
-router.post('/', auth, multer, stuffCtrl.createThings);
+router.post('/', auth, stuffCtrl.createThings);
 router.get('/', auth, stuffCtrl.getAllThings)
 router.get('/:id', auth, stuffCtrl.getThingById)
 router.put('/:id', auth, multer, stuffCtrl.putThingById)
