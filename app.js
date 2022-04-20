@@ -4,6 +4,7 @@ const path = require('path');
 
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
+const frontRoutes = require('./routes/index');
 
 // require('dotenv').config({ path: '.env.local' });
 require('dotenv').config();
@@ -30,10 +31,12 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+app.set('view engine', 'ejs');
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/', frontRoutes);
 
 module.exports = app; 
