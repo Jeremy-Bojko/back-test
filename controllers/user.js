@@ -9,9 +9,9 @@ exports.signup = (req, res, next) => {
   .then(hash => {
     const user = new User({
       email : req.body.email,
-      firstName : req.body.firstName,
-      lastName : req.body.lastName,
-      pseudo : req.body.pseudo,
+      firstName : req.body.firstName || "",
+      lastName : req.body.lastName || "",
+      pseudo : req.body.pseudo || "",
       password : hash
     });
     user.save()
@@ -45,3 +45,12 @@ exports.login = (req, res, next) => {
   } )
   .catch(error => res.status(500).json({ error }));
 }; 
+
+exports.getAllUser = (req, res, next) => {
+  User.find().then((userList) => {
+    res.status(200).json({
+      userList
+    })
+  })
+  .catch(error => res.status(500).json({error}))
+}

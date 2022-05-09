@@ -9,7 +9,7 @@ exports.createThings = (req, res, next) => {
   console.log(thingObject);
   const thing = new Thing({
     ...thingObject,
-    // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   thing.save()
   .then(() => {
