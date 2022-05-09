@@ -10,6 +10,6 @@ router.get('/personnal', auth, countryCtrl.getAllCountriesByUserId);
 router.get('/all', countryCtrl.getAllCountries);
 router.get('/:id', auth, countryCtrl.getCountryById);
 router.put('/:id', auth, countryCtrl.putCountryById);
-router.delete('/:id', auth, countryCtrl.deleteCountryById) 
+router.delete('/:id', auth, countryCtrl.deleteCountryById);
 
 module.exports = router;
