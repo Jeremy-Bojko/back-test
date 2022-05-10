@@ -82,15 +82,12 @@ exports.deleteCountryById = (req, res, next) => {
   Country.findOne( { _id: req.params.id, userId: userIdReq})
   .then(country => {
     if(country) {
-      res.status(200).json({ message : 'Country Deleted'})
+      Country.deleteOne( { _id: req.params.id})
+      .then(() => res.status(200).json({ message : 'Country Deleted'}))
+      .catch(error => res.status(500).json({ error })); 
     } else {
       res.status(401).json({ error : 'Unauthorized'})
-    }
-      
-      // Country.deleteOne( { _id: req.params.id})
-      // .then(() => res.status(200).json({ message : 'Country Deleted'}))
-      // .catch(error => res.status(400).json({ error })); 
-    // })
+    } 
   })
   .catch(error => res.status(404).json({ error }));
 }
